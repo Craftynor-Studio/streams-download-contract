@@ -1,0 +1,1 @@
+{"format":"streams-download","version":1,"metadata":{"title":"Example audio"},"streams":[{"id":"audio","url":"https://media.example/audio.m4a","role":"audio","mimeType":"audio/mp4"}],"operations":[],"output":{"source":"audio","filename":"Example.m4a","mimeType":"audio/mp4"}}

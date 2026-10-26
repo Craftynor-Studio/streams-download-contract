@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>Streams Download Contract · Craftynor Studio</title>
+<style>:root{font:16px/1.65 system-ui,sans-serif;color:#242426;background:#f6f6f7}body{max-width:760px;margin:64px auto;padding:0 24px}h1{font-size:clamp(32px,6vw,48px);line-height:1.15;letter-spacing:-.04em}h2{margin-top:36px;font-size:22px}p,li{color:#525258}a{color:inherit;text-underline-offset:4px}pre{padding:20px;background:#e9e9ec;overflow:auto;border-radius:8px;font-size:13px}code{font-family:ui-monospace,monospace}small{color:#777780}.links{display:flex;flex-wrap:wrap;gap:20px}@media(prefers-color-scheme:dark){:root{background:#202022;color:#f3f3f5}p,li{color:#bdbdc4}pre{background:#2e2e32}small{color:#97979e}}</style></head>
+<body><small>CRAFTYNOR STUDIO · VERSION 1</small><h1>One file. One download job.</h1>
+<p>The Streams Download Contract lets any website describe resources and processing in an ordinary <code>.streams.json</code> download. Compatible apps download the manifest, validate it, fetch its resources, merge or mux them, and save the finished file.</p>
+<nav class="links"><a href="v1/schema.json">JSON Schema</a><a href="https://github.com/Craftynor-Studio/streams-download-contract#readme">Full specification</a><a href="examples/direct.streams.json">Direct example</a><a href="examples/mux.streams.json">Mux example</a><a href="examples/merge.streams.json">Merge example</a></nav>
+<h2>For websites</h2><p>Offer an HTTPS attachment or a generated Blob with the filename <code>config.streams.json</code> and MIME type <code>application/vnd.streams-download+json</code>. Regular browsers save the JSON; compatible apps process it automatically.</p>
+<pre><code>const blob = new Blob([JSON.stringify(manifest)], {
+  type: "application/vnd.streams-download+json"
+});
+const url = URL.createObjectURL(blob);
+const link = document.createElement("a");
+link.href = url;
+link.download = "config.streams.json";
+document.body.append(link);
+link.click();
+link.remove();
+setTimeout(() =&gt; URL.revokeObjectURL(url), 60000);</code></pre>
+<h2>For apps</h2><p>Show a single persistent progress item through manifest download, resource transfer, processing and final save. Keep configuration and temporary inputs internal. Validate the schema and the specification’s graph, resource and redirect rules before executing operations.</p>
+<ul><li>Direct downloads, MP4/WebM muxing, ordered fragment assembly and media concatenation.</li><li>Optional size, SHA-256, expiry and one bounded manifest refresh.</li><li>Public HTTPS resources, no executable commands or filesystem paths.</li><li>512 KiB manifests, up to 256 resources and 64 ordered operations.</li></ul>
+<p><small>MIT licensed. Maintained by Craftynor Studio.</small></p></body></html>

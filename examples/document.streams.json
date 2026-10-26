@@ -1,0 +1,8 @@
+{
+  "format": "streams-download",
+  "version": 1,
+  "metadata": { "title": "Streams Download Contract" },
+  "streams": [{ "id": "document", "url": "https://craftynor-studio.github.io/streams-download-contract/README.md", "role": "file", "mimeType": "text/markdown" }],
+  "operations": [],
+  "output": { "source": "document", "filename": "Streams Download Contract.md", "mimeType": "text/markdown" }
+}
